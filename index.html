@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="style.css" rel="stylesheet">   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:description" content="drowing" />
+    <meta property="og:image" content="https://cdn.discordapp.com/emojis/997499445581185034.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="y <$" />
+    <meta property="og:url" content="https://ogyogurt.com/"/>
+    <link rel="icon" href="https://cdn.discordapp.com/emojis/997499445581185034.png">
+    <title>yogurt</title>
+</head>
+<body>
+  <div class="container">
+    <img class="profile-img" src="https://cdn.discordapp.com/attachments/999742837576974376/1118908183210111036/30e0b707ad6fa4925256edfa5b0eee55.jpg" alt="profile" />
+    <h1 class="name">yogurt</h1>
+    <div class="social-icons">
+      <div class="social-icon">
+        <a href="https://scrybabx.cc" target="_blank">
+          <i class='bx bx-heart' ></i>
+      </a>
+      </div>
+      <div class="social-icon">
+        <a href="https://www.instagram.com/yogurtzin/" target="_blank">
+          <i class='bx bxl-instagram'></i>
+      </a>
+      </div>
+      <div class="social-icon">
+        <a href="https://twitter.com/gozopink" target="_blank">
+        <i class='bx bxl-twitter'></i>
+      </a>
+      </div>
+      <div class="social-icon">
+        <a href="https://discord.com/users/115286332732997633" target="_blank">
+          <i class='bx bxl-discord-alt'></i>
+      </a>
+      </div>
+      <div class="social-icon">
+        <a href="https://open.spotify.com/user/31yu34cb6k5tihmqfly73mcnz3p4?si=4256339403594bcf" target="_blank">
+        <i class='bx bxl-spotify'></i>
+      </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+fetch("https://api.lanyard.rest/v1/users/115286332732997633")
+  .then(response => response.json())
+  .then(w => {
+    const info = w.data.discord_user;
+    const profileImg = document.querySelector('.profile-img');
+    const nameElement = document.querySelector('.name');
+    profileImg.src = info.avatar ? `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}.${info.avatar.startsWith("a_") ? 'gif' : 'png'}?size=512` : "https://cdn.discordapp.com/embed/avatars/1.png";
+    nameElement.textContent = info.username;
+  }).catch(error => {});
+
+  </script>
+</body>
+</html>
