@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      window.onload = function() {
+        fetch("https://api.lanyard.rest/v1/users/115286332732997633")
+          .then(response => response.json())
+          .then(w => {
+            const info = w.data.discord_user;
+            const profileImg = document.querySelector('.profile-img');
+            const nameElement = document.querySelector('.name');
+            profileImg.src = info.avatar ? `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}.${info.avatar.startsWith("a_") ? 'gif' : 'png'}?size=512` : "https://cdn.discordapp.com/embed/avatars/1.png";
+            nameElement.textContent = info.username;
+          })
+          .catch(error => {});
+      };
+    </script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="style.css" rel="stylesheet">   
     <meta charset="UTF-8">
@@ -45,18 +59,5 @@
       </div>
     </div>
   </div>
-
-  <script>
-fetch("https://api.lanyard.rest/v1/users/115286332732997633")
-  .then(response => response.json())
-  .then(w => {
-    const info = w.data.discord_user;
-    const profileImg = document.querySelector('.profile-img');
-    const nameElement = document.querySelector('.name');
-    profileImg.src = info.avatar ? `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}.${info.avatar.startsWith("a_") ? 'gif' : 'png'}?size=512` : "https://cdn.discordapp.com/embed/avatars/1.png";
-    nameElement.textContent = info.username;
-  }).catch(error => {});
-
-  </script>
 </body>
 </html>
